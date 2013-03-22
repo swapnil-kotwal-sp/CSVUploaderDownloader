@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+     <Button
+         android:id="@+id/btnUpload"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_below="@+id/editText1"
+         android:layout_marginTop="43dp"
+         android:text="Upload" />
+     
+     <EditText
+         android:id="@+id/editText1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentLeft="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginLeft="16dp"
+         android:layout_marginTop="25dp"
+         android:hint="Enter CSV file name"
+         android:ems="10" >
+         <requestFocus />
+     </EditText>
+
+     <Button
+         android:id="@+id/btnDownload"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/btnUpload"
+         android:layout_alignBottom="@+id/btnUpload"
+         android:layout_centerHorizontal="true"
+         android:text="Download" />
+
+     <Button
+         android:id="@+id/btnSend"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/btnDownload"
+         android:layout_alignBottom="@+id/btnDownload"
+         android:layout_toRightOf="@+id/editText1"
+         android:text="Send" />
+
+</RelativeLayout>
