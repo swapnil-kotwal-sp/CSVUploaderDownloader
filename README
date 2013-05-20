@@ -1,0 +1,2 @@
+This app used for processing CSV file data. 
+I have converted CSV file data into JSON format and also implemented functionality to upload CSV file and process data to store into SQLite Database.
