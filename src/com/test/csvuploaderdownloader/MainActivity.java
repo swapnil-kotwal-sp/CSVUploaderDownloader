@@ -14,9 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -27,6 +24,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import au.com.bytecode.opencsv.CSVWriter;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class MainActivity extends Activity {
 
@@ -58,7 +58,7 @@ public class MainActivity extends Activity {
         try {
           String csv = readTXTFile(
               Environment.getExternalStorageDirectory().getAbsolutePath()
-                  + "/test/test1.csv").toString();
+              + "/test/test1.csv").toString();
           JSONArray CSVToJson = new JSONArray(csv);
           dbJson = CSVToJson;
           Log.i("CSV Info", CSVToJson.toString());
@@ -68,6 +68,7 @@ public class MainActivity extends Activity {
       }
     });
 
+    /** database interaction **/
     // code to json to bean object
     Gson gson = new Gson();
     Type collectionType = new TypeToken<Collection<DataBean>>() {
@@ -78,11 +79,11 @@ public class MainActivity extends Activity {
     Toast.makeText(this, enums.toString(), 10000).show();
 
     DatabaseHandler db = new DatabaseHandler(this);
-//     Log.d("Insert: ", "Inserting ..");
-//     db.addContact(new Contact("Ravi", "9100000000"));
-//     db.addContact(new Contact("Srinivas", "9199999999"));
-//     db.addContact(new Contact("Tommy", "9522222222"));
-//     db.addContact(new Contact("Karthik", "9533333333"));
+    Log.d("Insert: ", "Inserting ..");
+    db.addContact(new Contact("Ravi", "9100000000"));
+    db.addContact(new Contact("Srinivas", "9199999999"));
+    db.addContact(new Contact("Tommy", "9522222222"));
+    db.addContact(new Contact("Karthik", "9533333333"));
 
     // Reading all contacts
     Log.d("Reading: ", "Reading all contacts..");
@@ -93,6 +94,7 @@ public class MainActivity extends Activity {
         showData(contacts);
       }
     });
+    /** database interaction **/
   }
 
   // for database entrie fetch
@@ -108,7 +110,7 @@ public class MainActivity extends Activity {
 
   public void saveCsv(JSONArray outerArray) throws IOException, JSONException {
     String rootPath = Environment.getExternalStorageDirectory()
-        .getAbsolutePath() + "/test/";
+    .getAbsolutePath() + "/test/";
     File dir = new File(rootPath);
     if (!dir.exists()) {
       dir.mkdir();
@@ -142,7 +144,7 @@ public class MainActivity extends Activity {
   }
 
   private static List<List<String>> readTXTFile(String csvFileName)
-      throws IOException {
+  throws IOException {
     String line = null;
     BufferedReader stream = null;
     List<List<String>> csvData = new ArrayList<List<String>>();
